@@ -14,17 +14,24 @@
 
 <div class="layout">
 
-    <!-- SIDEBAR -->
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
     <aside class="sidebar">
 
         <div class="brand">
-            <div class="brand-icon">K</div>
+
+            <div class="brand-icon">
+                K
+            </div>
 
             <div>
                 <strong>KoperasiKu</strong>
                 <small>Simpan Pinjam</small>
             </div>
+
         </div>
+
 
         <nav class="nav">
 
@@ -32,43 +39,53 @@
                 Dashboard
             </a>
 
+
             <div class="nav-title">
                 DATA MASTER
             </div>
+
 
             <a href="data-master.html" data-page="anggota">
                 Data Anggota
             </a>
 
+
             <div class="nav-title">
                 TRANSAKSI
             </div>
+
 
             <a href="simpanan.html" data-page="simpanan">
                 Simpanan
             </a>
 
+
             <a href="penarikan.html" data-page="penarikan">
                 Penarikan
             </a>
+
 
             <a href="pinjaman.html" data-page="pinjaman">
                 Pinjaman
             </a>
 
+
             <a href="angsuran.html" data-page="angsuran">
                 Angsuran
             </a>
 
+
             <div class="nav-title">
                 LAPORAN
             </div>
+
 
             <a href="laporan.html" data-page="laporan">
                 Laporan
             </a>
 
         </nav>
+
 
         <div class="sidebar-bottom">
 
@@ -85,11 +102,14 @@
 
             </div>
 
+
             <button
                 type="button"
                 class="logout-button"
                 onclick="logout()">
+
                 Keluar
+
             </button>
 
         </div>
@@ -97,15 +117,30 @@
     </aside>
 
 
-    <!-- MAIN -->
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
     <main class="main">
+
+
+        <!-- TOPBAR -->
 
         <header class="topbar">
 
             <div>
-                <span>PORTAL ADMIN</span>
-                <h1>Form Anggota</h1>
+
+                <span>
+                    PORTAL ADMIN
+                </span>
+
+                <h1>
+                    Form Anggota
+                </h1>
+
             </div>
+
 
             <div
                 class="date"
@@ -115,58 +150,94 @@
         </header>
 
 
+
+        <!-- CONTENT -->
+
         <section class="content">
 
+
             <div class="panel narrow">
+
 
                 <h2 id="formTitle">
                     Tambah Anggota
                 </h2>
+
 
                 <p class="muted">
                     Isi data anggota baru. Data akan langsung muncul pada modul transaksi.
                 </p>
 
 
+
+                <!-- =================================================
+                     FORM ANGGOTA
+                     ================================================= -->
+
                 <form
                     id="memberForm"
                     class="form-grid"
                     autocomplete="off">
+
+
+                    <!-- ID UNTUK EDIT -->
 
                     <input
                         type="hidden"
                         id="memberId">
 
 
+
+                    <!-- NAMA -->
+
                     <label>
+
                         Nama Lengkap*
 
                         <input
                             type="text"
                             id="memberName"
+                            placeholder="Masukkan nama lengkap"
                             required>
+
                     </label>
 
 
+
+                    <!-- NIK -->
+
                     <label>
+
                         NIK
 
                         <input
                             type="text"
-                            id="memberNik">
+                            id="memberNik"
+                            placeholder="Masukkan NIK">
+
                     </label>
 
 
+
+                    <!-- TELEPON -->
+
                     <label>
+
                         Nomor Telepon
 
                         <input
                             type="text"
-                            id="memberPhone">
+                            id="memberPhone"
+                            placeholder="Masukkan nomor telepon">
+
                     </label>
 
 
+
+                    <!-- STATUS -->
+
                     <label>
+
                         Status*
 
                         <select
@@ -186,16 +257,26 @@
                     </label>
 
 
+
+                    <!-- ALAMAT -->
+
                     <label class="full">
+
                         Alamat
 
                         <textarea
                             id="memberAddress"
-                            rows="4"></textarea>
+                            rows="4"
+                            placeholder="Masukkan alamat lengkap"></textarea>
+
                     </label>
 
 
+
+                    <!-- TANGGAL -->
+
                     <label>
+
                         Tanggal Daftar*
 
                         <input
@@ -206,21 +287,30 @@
                     </label>
 
 
+
+                    <!-- BUTTON -->
+
                     <div class="actions full">
 
                         <a
                             class="btn"
                             href="data-master.html">
+
                             Batal
+
                         </a>
+
 
                         <button
                             class="btn primary"
                             type="submit">
+
                             Simpan Anggota
+
                         </button>
 
                     </div>
+
 
                 </form>
 
@@ -233,28 +323,208 @@
 </div>
 
 
-<!-- APP.JS DULU -->
+
+<!-- =========================================================
+     APP.JS
+     ========================================================= -->
+
 <script src="../assets/js/app.js"></script>
 
 
-<!-- BARU JALANKAN FUNGSI -->
+
+<!-- =========================================================
+     FORM ANGGOTA
+     ========================================================= -->
+
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    protectPage();
+    /* =====================================================
+       TANGGAL HARI INI
+       ===================================================== */
 
-    setToday();
+    const todayElement =
+        document.getElementById("today");
 
-    setActive("anggota");
 
-    setDateValue("memberDate");
+    if (todayElement) {
 
+        const now = new Date();
+
+        const options = {
+            day: "2-digit",
+            month: "long",
+            year: "numeric"
+        };
+
+        todayElement.textContent =
+            now.toLocaleDateString(
+                "id-ID",
+                options
+            );
+
+    }
+
+
+
+    /* =====================================================
+       TANGGAL DAFTAR OTOMATIS
+       ===================================================== */
+
+    const dateInput =
+        document.getElementById("memberDate");
+
+
+    if (dateInput && !dateInput.value) {
+
+        const now = new Date();
+
+        const year =
+            now.getFullYear();
+
+        const month =
+            String(
+                now.getMonth() + 1
+            ).padStart(2, "0");
+
+        const day =
+            String(
+                now.getDate()
+            ).padStart(2, "0");
+
+        dateInput.value =
+            year + "-" +
+            month + "-" +
+            day;
+
+    }
+
+
+
+    /* =====================================================
+       MENU AKTIF
+       ===================================================== */
+
+    if (
+        typeof setActive === "function"
+    ) {
+
+        setActive("anggota");
+
+    }
+
+
+
+    /* =====================================================
+       PROTEKSI HALAMAN
+       ===================================================== */
+
+    if (
+        typeof protectPage === "function"
+    ) {
+
+        protectPage();
+
+    }
+
+
+
+    /* =====================================================
+       AMBIL DATA LOCAL STORAGE
+       ===================================================== */
+
+    const STORAGE_KEY =
+        "koperasiku_data_v3";
+
+
+    function getKoperasiData() {
+
+        const saved =
+            localStorage.getItem(
+                STORAGE_KEY
+            );
+
+
+        if (!saved) {
+
+            return {
+                anggota: [],
+                simpanan: [],
+                pinjaman: [],
+                angsuran: []
+            };
+
+        }
+
+
+        try {
+
+            const data =
+                JSON.parse(saved);
+
+
+            if (!Array.isArray(data.anggota)) {
+                data.anggota = [];
+            }
+
+
+            if (!Array.isArray(data.simpanan)) {
+                data.simpanan = [];
+            }
+
+
+            if (!Array.isArray(data.pinjaman)) {
+                data.pinjaman = [];
+            }
+
+
+            if (!Array.isArray(data.angsuran)) {
+                data.angsuran = [];
+            }
+
+
+            return data;
+
+        } catch (error) {
+
+            return {
+                anggota: [],
+                simpanan: [],
+                pinjaman: [],
+                angsuran: []
+            };
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       SIMPAN DATA
+       ===================================================== */
+
+    function saveKoperasiData(data) {
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(data)
+        );
+
+    }
+
+
+
+    /* =====================================================
+       CEK MODE EDIT
+       ===================================================== */
 
     const params =
         new URLSearchParams(
             window.location.search
         );
+
 
     const editId =
         Number(
@@ -262,12 +532,85 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-    if (editId) {
 
-        loadMemberForm(editId);
+    /* =====================================================
+       JIKA EDIT
+       ===================================================== */
+
+    if (editId > 0) {
+
+        const data =
+            getKoperasiData();
+
+
+        const anggota =
+            data.anggota.find(
+                function (item) {
+
+                    return Number(item.id) === editId;
+
+                }
+            );
+
+
+        if (anggota) {
+
+            document.getElementById(
+                "formTitle"
+            ).textContent =
+                "Edit Anggota";
+
+
+            document.getElementById(
+                "memberId"
+            ).value =
+                anggota.id || "";
+
+
+            document.getElementById(
+                "memberName"
+            ).value =
+                anggota.nama || "";
+
+
+            document.getElementById(
+                "memberNik"
+            ).value =
+                anggota.nik || "";
+
+
+            document.getElementById(
+                "memberPhone"
+            ).value =
+                anggota.telepon || "";
+
+
+            document.getElementById(
+                "memberStatus"
+            ).value =
+                anggota.status || "Aktif";
+
+
+            document.getElementById(
+                "memberAddress"
+            ).value =
+                anggota.alamat || "";
+
+
+            document.getElementById(
+                "memberDate"
+            ).value =
+                anggota.tanggal_daftar || "";
+
+        }
 
     }
 
+
+
+    /* =====================================================
+       FORM SUBMIT
+       ===================================================== */
 
     const form =
         document.getElementById(
@@ -275,14 +618,306 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-    if (form) {
+    form.addEventListener(
+        "submit",
+        function (event) {
 
-        form.addEventListener(
-            "submit",
-            saveMember
-        );
+            event.preventDefault();
 
-    }
+
+            /* =============================================
+               AMBIL NILAI FORM
+               ============================================= */
+
+            const nama =
+                document.getElementById(
+                    "memberName"
+                ).value.trim();
+
+
+            const nik =
+                document.getElementById(
+                    "memberNik"
+                ).value.trim();
+
+
+            const telepon =
+                document.getElementById(
+                    "memberPhone"
+                ).value.trim();
+
+
+            const status =
+                document.getElementById(
+                    "memberStatus"
+                ).value;
+
+
+            const alamat =
+                document.getElementById(
+                    "memberAddress"
+                ).value.trim();
+
+
+            const tanggal =
+                document.getElementById(
+                    "memberDate"
+                ).value;
+
+
+            const id =
+                Number(
+                    document.getElementById(
+                        "memberId"
+                    ).value || 0
+                );
+
+
+
+            /* =============================================
+               VALIDASI
+               ============================================= */
+
+            if (!nama) {
+
+                alert(
+                    "Nama anggota wajib diisi."
+                );
+
+                document.getElementById(
+                    "memberName"
+                ).focus();
+
+                return;
+
+            }
+
+
+            if (!tanggal) {
+
+                alert(
+                    "Tanggal daftar wajib diisi."
+                );
+
+                document.getElementById(
+                    "memberDate"
+                ).focus();
+
+                return;
+
+            }
+
+
+
+            /* =============================================
+               AMBIL DATA LAMA
+               ============================================= */
+
+            const data =
+                getKoperasiData();
+
+
+
+            /* =============================================
+               MODE EDIT
+               ============================================= */
+
+            if (id > 0) {
+
+                const index =
+                    data.anggota.findIndex(
+                        function (item) {
+
+                            return Number(item.id) === id;
+
+                        }
+                    );
+
+
+                if (index === -1) {
+
+                    alert(
+                        "Data anggota tidak ditemukan."
+                    );
+
+                    return;
+
+                }
+
+
+                data.anggota[index].nama =
+                    nama;
+
+                data.anggota[index].nik =
+                    nik;
+
+                data.anggota[index].telepon =
+                    telepon;
+
+                data.anggota[index].status =
+                    status;
+
+                data.anggota[index].alamat =
+                    alamat;
+
+                data.anggota[index].tanggal_daftar =
+                    tanggal;
+
+
+
+                saveKoperasiData(data);
+
+
+                alert(
+                    "Data anggota berhasil diperbarui."
+                );
+
+
+                window.location.href =
+                    "data-master.html";
+
+
+                return;
+
+            }
+
+
+
+            /* =============================================
+               MODE TAMBAH
+               ============================================= */
+
+            let maxId = 0;
+
+
+            data.anggota.forEach(
+                function (item) {
+
+                    const currentId =
+                        Number(item.id) || 0;
+
+
+                    if (currentId > maxId) {
+
+                        maxId =
+                            currentId;
+
+                    }
+
+                }
+            );
+
+
+            const newId =
+                maxId + 1;
+
+
+
+            /* =============================================
+               BUAT ID ANGGOTA
+               ============================================= */
+
+            const idAnggota =
+                "AGT-" +
+                String(
+                    Date.now()
+                ).slice(-8);
+
+
+
+            /* =============================================
+               DATA ANGGOTA BARU
+               ============================================= */
+
+            const anggotaBaru = {
+
+                id: newId,
+
+                id_anggota:
+                    idAnggota,
+
+                nama:
+                    nama,
+
+                nik:
+                    nik,
+
+                telepon:
+                    telepon,
+
+                alamat:
+                    alamat,
+
+                status:
+                    status,
+
+                tanggal_daftar:
+                    tanggal
+
+            };
+
+
+
+            /* =============================================
+               MASUKKAN KE ARRAY
+               ============================================= */
+
+            data.anggota.push(
+                anggotaBaru
+            );
+
+
+
+            /* =============================================
+               SIMPAN KE LOCAL STORAGE
+               ============================================= */
+
+            saveKoperasiData(
+                data
+            );
+
+
+
+            /* =============================================
+               CEK DATA BERHASIL DISIMPAN
+               ============================================= */
+
+            const check =
+                localStorage.getItem(
+                    STORAGE_KEY
+                );
+
+
+            if (!check) {
+
+                alert(
+                    "Gagal menyimpan data anggota."
+                );
+
+                return;
+
+            }
+
+
+
+            /* =============================================
+               BERHASIL
+               ============================================= */
+
+            alert(
+                "Data anggota berhasil disimpan!"
+            );
+
+
+            /* =============================================
+               KEMBALI KE DATA ANGGOTA
+               ============================================= */
+
+            window.location.href =
+                "data-master.html";
+
+        }
+    );
 
 });
 

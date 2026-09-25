@@ -1,122 +1,433 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Angsuran | KoperasiKu</title>
+
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+
 <body>
+
 <div class="layout">
-<aside class="sidebar">
-    <div class="brand">
-        <div class="brand-icon">K</div>
-        <div>
-            <strong>KoperasiKu</strong>
-            <small>Simpan Pinjam</small>
-        </div>
-    </div>
 
-    <nav class="nav">
-        <a href="dashboard.html" data-page="dashboard">Dashboard</a>
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
 
-        <div class="nav-title">DATA MASTER</div>
-        <a href="data-master.html" data-page="anggota">Data Anggota</a>
+        <div class="brand">
 
-        <div class="nav-title">TRANSAKSI</div>
-        <a href="simpanan.html" data-page="simpanan">Simpanan</a>
-        <a href="penarikan.html" data-page="penarikan">Penarikan</a>
-        <a href="pinjaman.html" data-page="pinjaman">Pinjaman</a>
-        <a href="angsuran.html" data-page="angsuran">Angsuran</a>
-
-        <div class="nav-title">LAPORAN</div>
-        <a href="laporan.html" data-page="laporan">Laporan</a>
-    </nav>
-
-    <div class="sidebar-bottom">
-        <div class="admin-box">
-            <div class="avatar">A</div>
-            <div>
-                <strong>Administrator</strong>
-                <small>Admin</small>
+            <div class="brand-icon">
+                K
             </div>
+
+            <div>
+                <strong>KoperasiKu</strong>
+                <small>Simpan Pinjam</small>
+            </div>
+
         </div>
-        <button class="logout-button" onclick="logout()">Keluar</button>
-    </div>
-</aside>
-<main class="main">
-    <header class="topbar">
-        <div>
-            <span>PORTAL ADMIN</span>
-            <h1>Angsuran</h1>
+
+
+        <!-- ================= NAVIGASI ================= -->
+        <nav class="nav">
+
+            <a href="dashboard.html" data-page="dashboard">
+                Dashboard
+            </a>
+
+
+            <div class="nav-title">
+                DATA MASTER
+            </div>
+
+            <a href="data-master.html" data-page="anggota">
+                Data Anggota
+            </a>
+
+
+            <div class="nav-title">
+                TRANSAKSI
+            </div>
+
+            <a href="simpanan.html" data-page="simpanan">
+                Simpanan
+            </a>
+
+            <a href="penarikan.html" data-page="penarikan">
+                Penarikan
+            </a>
+
+            <a href="pinjaman.html" data-page="pinjaman">
+                Pinjaman
+            </a>
+
+            <a href="angsuran.html" data-page="angsuran">
+                Angsuran
+            </a>
+
+
+            <div class="nav-title">
+                LAPORAN
+            </div>
+
+            <a href="laporan.html" data-page="laporan">
+                Laporan
+            </a>
+
+        </nav>
+
+
+        <!-- ================= ADMIN ================= -->
+        <div class="sidebar-bottom">
+
+            <div class="admin-box">
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Admin</small>
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="logout-button"
+                onclick="logout()">
+
+                Keluar
+
+            </button>
+
         </div>
-        <div class="date" id="today"></div>
-    </header>
-    <section class="content">
 
-<div class="panel narrow">
-    <h2>Bayar Angsuran</h2>
-    <p class="muted">Pembayaran akan otomatis mengurangi sisa pinjaman.</p>
+    </aside>
 
-    <form id="installmentForm" class="form-grid">
-        <label class="full">Pinjaman Aktif*
-            <select id="installmentLoan" required></select>
-        </label>
 
-        <label>Sisa Pinjaman
-            <input id="installmentBalance" readonly>
-        </label>
+    <!-- ================= MAIN ================= -->
+    <main class="main">
 
-        <label>Angsuran Normal
-            <input id="normalInstallment" readonly>
-        </label>
 
-        <label>Nominal Pembayaran*
-            <input id="installmentAmount" type="number" min="1" step="1" required>
-        </label>
+        <!-- ================= TOPBAR ================= -->
+        <header class="topbar">
 
-        <label>Tanggal*
-            <input id="installmentDate" type="date" required>
-        </label>
+            <div>
 
-        <label class="full">Keterangan
-            <textarea id="installmentNote" placeholder="Contoh: pembayaran angsuran bulan berjalan"></textarea>
-        </label>
+                <span>
+                    PORTAL ADMIN
+                </span>
 
-        <div class="actions full">
-            <button class="btn primary">Simpan Pembayaran</button>
-        </div>
-    </form>
+                <h1>
+                    Angsuran
+                </h1>
+
+            </div>
+
+
+            <div
+                class="date"
+                id="today">
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+        <section class="content">
+
+
+            <!-- ================= BAYAR ANGSURAN ================= -->
+            <div class="panel narrow">
+
+                <h2>
+                    Bayar Angsuran
+                </h2>
+
+                <p class="muted">
+                    Pembayaran akan otomatis mengurangi sisa pinjaman.
+                </p>
+
+
+                <form
+                    id="installmentForm"
+                    class="form-grid">
+
+
+                    <!-- PINJAMAN AKTIF -->
+                    <label class="full">
+
+                        Pinjaman Aktif*
+
+                        <select
+                            id="installmentLoan"
+                            required>
+
+                            <option value="">
+                                Pilih pinjaman
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <!-- SISA PINJAMAN -->
+                    <label>
+
+                        Sisa Pinjaman
+
+                        <input
+                            id="installmentBalance"
+                            type="text"
+                            value="Rp 0"
+                            readonly>
+
+                    </label>
+
+
+                    <!-- ANGSURAN NORMAL -->
+                    <label>
+
+                        Angsuran Normal
+
+                        <input
+                            id="normalInstallment"
+                            type="text"
+                            value="Rp 0"
+                            readonly>
+
+                    </label>
+
+
+                    <!-- NOMINAL PEMBAYARAN -->
+                    <label>
+
+                        Nominal Pembayaran*
+
+                        <input
+                            id="installmentAmount"
+                            type="number"
+                            min="1"
+                            step="1"
+                            placeholder="Masukkan nominal pembayaran"
+                            required>
+
+                    </label>
+
+
+                    <!-- TANGGAL -->
+                    <label>
+
+                        Tanggal*
+
+                        <input
+                            id="installmentDate"
+                            type="date"
+                            required>
+
+                    </label>
+
+
+                    <!-- KETERANGAN -->
+                    <label class="full">
+
+                        Keterangan
+
+                        <textarea
+                            id="installmentNote"
+                            placeholder="Contoh: pembayaran angsuran bulan berjalan"></textarea>
+
+                    </label>
+
+
+                    <!-- BUTTON -->
+                    <div class="actions full">
+
+                        <button
+                            type="submit"
+                            class="btn primary">
+
+                            Simpan Pembayaran
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= RIWAYAT ANGSURAN ================= -->
+            <div class="panel">
+
+                <h3>
+                    Riwayat Angsuran
+                </h3>
+
+
+                <div class="table">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No
+                                </th>
+
+                                <th>
+                                    Pinjaman
+                                </th>
+
+                                <th>
+                                    Anggota
+                                </th>
+
+                                <th>
+                                    Ke
+                                </th>
+
+                                <th>
+                                    Nominal
+                                </th>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Keterangan
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="installmentTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
 </div>
 
-<div class="panel">
-    <h3>Riwayat Angsuran</h3>
-    <div class="table">
-        <table>
-            <thead><tr><th>No</th><th>Pinjaman</th><th>Anggota</th><th>Ke</th><th>Nominal</th><th>Tanggal</th><th>Keterangan</th></tr></thead>
-            <tbody id="installmentTable"></tbody>
-        </table>
-    </div>
-</div>
 
-<script>
-fillLoanOptions();
-setDateValue("installmentDate");
-updateInstallmentInfo();
-renderInstallments();
+<!-- ==================================================
+     APP.JS
+     HARUS DIMUAT SEBELUM FUNGSI DIGUNAKAN
+     ================================================== -->
 
-document.getElementById("installmentLoan").addEventListener("change", updateInstallmentInfo);
-document.getElementById("installmentForm").addEventListener("submit", saveInstallment);
-</script>
-
-    </section>
-</main>
-</div>
 <script src="../assets/js/app.js"></script>
+
+
+<!-- ==================================================
+     INISIALISASI HALAMAN ANGSURAN
+     ================================================== -->
+
 <script>
-protectPage();
-setToday();
-setActive("angsuran");
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /*
+     * Proteksi halaman
+     */
+    protectPage();
+
+
+    /*
+     * Tampilkan tanggal hari ini
+     */
+    setToday();
+
+
+    /*
+     * Tandai menu Angsuran sebagai aktif
+     */
+    setActive("angsuran");
+
+
+    /*
+     * Isi dropdown dengan
+     * pinjaman yang masih aktif
+     */
+    fillLoanOptions();
+
+
+    /*
+     * Isi tanggal otomatis
+     */
+    setDateValue("installmentDate");
+
+
+    /*
+     * Tampilkan informasi
+     * sisa pinjaman dan angsuran normal
+     */
+    updateInstallmentInfo();
+
+
+    /*
+     * Tampilkan riwayat angsuran
+     */
+    renderInstallments();
+
+
+    /*
+     * Ketika pinjaman diganti,
+     * informasi otomatis diperbarui
+     */
+    const loan =
+        document.getElementById("installmentLoan");
+
+    if (loan) {
+
+        loan.addEventListener(
+            "change",
+            updateInstallmentInfo
+        );
+
+    }
+
+
+    /*
+     * Form pembayaran angsuran
+     */
+    const form =
+        document.getElementById("installmentForm");
+
+    if (form) {
+
+        form.addEventListener(
+            "submit",
+            saveInstallment
+        );
+
+    }
+
+});
+
 </script>
+
 </body>
 </html>

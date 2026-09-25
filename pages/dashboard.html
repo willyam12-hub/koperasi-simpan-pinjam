@@ -1,113 +1,434 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Dashboard | KoperasiKu</title>
+
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+
 <body>
+
 <div class="layout">
-<aside class="sidebar">
-    <div class="brand">
-        <div class="brand-icon">K</div>
-        <div>
-            <strong>KoperasiKu</strong>
-            <small>Simpan Pinjam</small>
-        </div>
-    </div>
 
-    <nav class="nav">
-        <a href="dashboard.html" data-page="dashboard">Dashboard</a>
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
 
-        <div class="nav-title">DATA MASTER</div>
-        <a href="data-master.html" data-page="anggota">Data Anggota</a>
+        <div class="brand">
 
-        <div class="nav-title">TRANSAKSI</div>
-        <a href="simpanan.html" data-page="simpanan">Simpanan</a>
-        <a href="penarikan.html" data-page="penarikan">Penarikan</a>
-        <a href="pinjaman.html" data-page="pinjaman">Pinjaman</a>
-        <a href="angsuran.html" data-page="angsuran">Angsuran</a>
-
-        <div class="nav-title">LAPORAN</div>
-        <a href="laporan.html" data-page="laporan">Laporan</a>
-    </nav>
-
-    <div class="sidebar-bottom">
-        <div class="admin-box">
-            <div class="avatar">A</div>
-            <div>
-                <strong>Administrator</strong>
-                <small>Admin</small>
+            <div class="brand-icon">
+                K
             </div>
+
+            <div>
+                <strong>KoperasiKu</strong>
+                <small>Simpan Pinjam</small>
+            </div>
+
         </div>
-        <button class="logout-button" onclick="logout()">Keluar</button>
-    </div>
-</aside>
-<main class="main">
-    <header class="topbar">
-        <div>
-            <span>PORTAL ADMIN</span>
-            <h1>Dashboard</h1>
+
+
+        <!-- ================= NAVIGASI ================= -->
+        <nav class="nav">
+
+            <a href="dashboard.html" data-page="dashboard">
+                Dashboard
+            </a>
+
+
+            <div class="nav-title">
+                DATA MASTER
+            </div>
+
+            <a href="data-master.html" data-page="anggota">
+                Data Anggota
+            </a>
+
+
+            <div class="nav-title">
+                TRANSAKSI
+            </div>
+
+            <a href="simpanan.html" data-page="simpanan">
+                Simpanan
+            </a>
+
+            <a href="penarikan.html" data-page="penarikan">
+                Penarikan
+            </a>
+
+            <a href="pinjaman.html" data-page="pinjaman">
+                Pinjaman
+            </a>
+
+            <a href="angsuran.html" data-page="angsuran">
+                Angsuran
+            </a>
+
+
+            <div class="nav-title">
+                LAPORAN
+            </div>
+
+            <a href="laporan.html" data-page="laporan">
+                Laporan
+            </a>
+
+        </nav>
+
+
+        <!-- ================= ADMIN ================= -->
+        <div class="sidebar-bottom">
+
+            <div class="admin-box">
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Admin</small>
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="logout-button"
+                onclick="logout()">
+
+                Keluar
+
+            </button>
+
         </div>
-        <div class="date" id="today"></div>
-    </header>
-    <section class="content">
 
-<div class="hero">
-    <div>
-        <span>PORTAL KOPERASI</span>
-        <h2>Selamat Datang, Administrator!</h2>
-        <p>Kelola anggota, simpanan, pinjaman, penarikan, angsuran, dan laporan.</p>
-    </div>
-    <a class="btn primary" href="form.html">+ Tambah Anggota</a>
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="main">
+
+
+        <!-- ================= TOPBAR ================= -->
+        <header class="topbar">
+
+            <div>
+
+                <span>
+                    PORTAL ADMIN
+                </span>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+            </div>
+
+
+            <div
+                class="date"
+                id="today">
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+        <section class="content">
+
+
+            <!-- ================= HERO ================= -->
+            <div class="hero">
+
+                <div>
+
+                    <span>
+                        PORTAL KOPERASI
+                    </span>
+
+                    <h2>
+                        Selamat Datang, Administrator!
+                    </h2>
+
+                    <p>
+                        Kelola anggota, simpanan, pinjaman,
+                        penarikan, angsuran, dan laporan.
+                    </p>
+
+                </div>
+
+
+                <a
+                    class="btn primary"
+                    href="form.html">
+
+                    + Tambah Anggota
+
+                </a>
+
+            </div>
+
+
+            <!-- ================= STATISTIK ================= -->
+            <div class="cards">
+
+
+                <!-- TOTAL ANGGOTA -->
+                <div class="stat-card">
+
+                    <span>
+                        Total Anggota
+                    </span>
+
+                    <strong id="totalAnggota">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <!-- SALDO SIMPANAN -->
+                <div class="stat-card">
+
+                    <span>
+                        Saldo Simpanan
+                    </span>
+
+                    <strong id="saldoSimpanan">
+                        Rp 0
+                    </strong>
+
+                </div>
+
+
+                <!-- TOTAL PINJAMAN -->
+                <div class="stat-card">
+
+                    <span>
+                        Total Pinjaman
+                    </span>
+
+                    <strong id="totalPinjaman">
+                        Rp 0
+                    </strong>
+
+                </div>
+
+
+                <!-- SISA PINJAMAN -->
+                <div class="stat-card">
+
+                    <span>
+                        Sisa Pinjaman
+                    </span>
+
+                    <strong id="sisaPinjaman">
+                        Rp 0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= GRID ================= -->
+            <div class="grid-2">
+
+
+                <!-- ALUR SISTEM -->
+                <div class="panel">
+
+                    <h3>
+                        Alur Sistem
+                    </h3>
+
+
+                    <div class="flow">
+
+                        <b>
+                            Anggota
+                        </b>
+
+                        <span>
+                            →
+                        </span>
+
+                        <b>
+                            Simpanan
+                        </b>
+
+                        <span>
+                            →
+                        </span>
+
+                        <b>
+                            Pinjaman
+                        </b>
+
+                        <span>
+                            →
+                        </span>
+
+                        <b>
+                            Angsuran
+                        </b>
+
+                    </div>
+
+
+                    <p class="muted">
+                        Semua modul saling terhubung menggunakan
+                        localStorage browser.
+                    </p>
+
+                </div>
+
+
+                <!-- RINGKASAN -->
+                <div class="panel">
+
+                    <h3>
+                        Ringkasan
+                    </h3>
+
+
+                    <p>
+                        Pinjaman aktif:
+                        <strong id="pinjamanAktif">
+                            0
+                        </strong>
+                    </p>
+
+
+                    <p>
+                        Pinjaman lunas:
+                        <strong id="pinjamanLunas">
+                            0
+                        </strong>
+                    </p>
+
+
+                    <p>
+                        Total angsuran:
+                        <strong id="totalAngsuran">
+                            Rp 0
+                        </strong>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= TRANSAKSI TERBARU ================= -->
+            <div class="panel">
+
+                <h3>
+                    Transaksi Terbaru
+                </h3>
+
+
+                <div class="table">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Jenis
+                                </th>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Anggota
+                                </th>
+
+                                <th>
+                                    Nominal
+                                </th>
+
+                                <th>
+                                    Keterangan
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="dashboardTransactions">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
 </div>
 
-<div class="cards">
-    <div class="stat-card"><span>Total Anggota</span><strong id="totalAnggota">0</strong></div>
-    <div class="stat-card"><span>Saldo Simpanan</span><strong id="saldoSimpanan">Rp 0</strong></div>
-    <div class="stat-card"><span>Total Pinjaman</span><strong id="totalPinjaman">Rp 0</strong></div>
-    <div class="stat-card"><span>Sisa Pinjaman</span><strong id="sisaPinjaman">Rp 0</strong></div>
-</div>
 
-<div class="grid-2">
-    <div class="panel">
-        <h3>Alur Sistem</h3>
-        <div class="flow">
-            <b>Anggota</b><span>→</span><b>Simpanan</b><span>→</span>
-            <b>Pinjaman</b><span>→</span><b>Angsuran</b>
-        </div>
-        <p class="muted">Semua modul saling terhubung menggunakan localStorage browser.</p>
-    </div>
+<!-- ==================================================
+     APP.JS
+     HARUS DIMUAT SEBELUM renderDashboard()
+     ================================================== -->
 
-    <div class="panel">
-        <h3>Ringkasan</h3>
-        <p>Pinjaman aktif: <strong id="pinjamanAktif">0</strong></p>
-        <p>Pinjaman lunas: <strong id="pinjamanLunas">0</strong></p>
-        <p>Total angsuran: <strong id="totalAngsuran">Rp 0</strong></p>
-    </div>
-</div>
-
-<div class="panel">
-    <h3>Transaksi Terbaru</h3>
-    <div class="table">
-        <table>
-            <thead><tr><th>Jenis</th><th>Tanggal</th><th>Anggota</th><th>Nominal</th><th>Keterangan</th></tr></thead>
-            <tbody id="dashboardTransactions"></tbody>
-        </table>
-    </div>
-</div>
-
-<script>renderDashboard();</script>
-
-    </section>
-</main>
-</div>
 <script src="../assets/js/app.js"></script>
+
+
+<!-- ==================================================
+     INISIALISASI DASHBOARD
+     ================================================== -->
+
 <script>
-protectPage();
-setToday();
-setActive("dashboard");
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /*
+     * Proteksi halaman
+     */
+    protectPage();
+
+
+    /*
+     * Tampilkan tanggal hari ini
+     */
+    setToday();
+
+
+    /*
+     * Tandai menu Dashboard sebagai aktif
+     */
+    setActive("dashboard");
+
+
+    /*
+     * Ambil seluruh data dari localStorage
+     * dan tampilkan pada Dashboard
+     */
+    renderDashboard();
+
+});
+
 </script>
+
 </body>
 </html>

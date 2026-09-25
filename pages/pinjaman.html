@@ -1,129 +1,478 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Pinjaman | KoperasiKu</title>
+
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+
 <body>
+
 <div class="layout">
-<aside class="sidebar">
-    <div class="brand">
-        <div class="brand-icon">K</div>
-        <div>
-            <strong>KoperasiKu</strong>
-            <small>Simpan Pinjam</small>
-        </div>
-    </div>
 
-    <nav class="nav">
-        <a href="dashboard.html" data-page="dashboard">Dashboard</a>
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
 
-        <div class="nav-title">DATA MASTER</div>
-        <a href="data-master.html" data-page="anggota">Data Anggota</a>
+        <div class="brand">
 
-        <div class="nav-title">TRANSAKSI</div>
-        <a href="simpanan.html" data-page="simpanan">Simpanan</a>
-        <a href="penarikan.html" data-page="penarikan">Penarikan</a>
-        <a href="pinjaman.html" data-page="pinjaman">Pinjaman</a>
-        <a href="angsuran.html" data-page="angsuran">Angsuran</a>
-
-        <div class="nav-title">LAPORAN</div>
-        <a href="laporan.html" data-page="laporan">Laporan</a>
-    </nav>
-
-    <div class="sidebar-bottom">
-        <div class="admin-box">
-            <div class="avatar">A</div>
-            <div>
-                <strong>Administrator</strong>
-                <small>Admin</small>
+            <div class="brand-icon">
+                K
             </div>
-        </div>
-        <button class="logout-button" onclick="logout()">Keluar</button>
-    </div>
-</aside>
-<main class="main">
-    <header class="topbar">
-        <div>
-            <span>PORTAL ADMIN</span>
-            <h1>Pinjaman</h1>
-        </div>
-        <div class="date" id="today"></div>
-    </header>
-    <section class="content">
 
-<div class="panel">
-    <h2>Tambah Pinjaman</h2>
-    <p class="muted">Perhitungan memakai bunga flat tahunan yang diprorata berdasarkan tenor.</p>
+            <div>
+                <strong>KoperasiKu</strong>
+                <small>Simpan Pinjam</small>
+            </div>
 
-    <form id="loanForm" class="form-grid">
-        <label>Anggota*
-            <select id="loanMember" required></select>
-        </label>
-
-        <label>Jumlah Pinjaman*
-            <input id="loanAmount" type="number" min="1" step="1" required>
-        </label>
-
-        <label>Bunga per Tahun (%)
-            <input id="loanInterest" type="number" min="0" max="100" step="0.01" value="12" required>
-        </label>
-
-        <label>Tenor (bulan)*
-            <input id="loanTenor" type="number" min="1" max="120" value="12" required>
-        </label>
-
-        <label>Tanggal*
-            <input id="loanDate" type="date" required>
-        </label>
-
-        <div id="loanSimulation" class="info full">
-            Isi jumlah pinjaman dan tenor untuk melihat simulasi.
         </div>
 
-        <div class="actions full">
-            <button class="btn primary">Simpan Pinjaman</button>
+
+        <!-- ================= NAVIGASI ================= -->
+        <nav class="nav">
+
+            <a href="dashboard.html" data-page="dashboard">
+                Dashboard
+            </a>
+
+
+            <div class="nav-title">
+                DATA MASTER
+            </div>
+
+            <a href="data-master.html" data-page="anggota">
+                Data Anggota
+            </a>
+
+
+            <div class="nav-title">
+                TRANSAKSI
+            </div>
+
+            <a href="simpanan.html" data-page="simpanan">
+                Simpanan
+            </a>
+
+            <a href="penarikan.html" data-page="penarikan">
+                Penarikan
+            </a>
+
+            <a href="pinjaman.html" data-page="pinjaman">
+                Pinjaman
+            </a>
+
+            <a href="angsuran.html" data-page="angsuran">
+                Angsuran
+            </a>
+
+
+            <div class="nav-title">
+                LAPORAN
+            </div>
+
+            <a href="laporan.html" data-page="laporan">
+                Laporan
+            </a>
+
+        </nav>
+
+
+        <!-- ================= ADMIN ================= -->
+        <div class="sidebar-bottom">
+
+            <div class="admin-box">
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Admin</small>
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="logout-button"
+                onclick="logout()">
+
+                Keluar
+
+            </button>
+
         </div>
-    </form>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="main">
+
+
+        <!-- ================= TOPBAR ================= -->
+        <header class="topbar">
+
+            <div>
+
+                <span>
+                    PORTAL ADMIN
+                </span>
+
+                <h1>
+                    Pinjaman
+                </h1>
+
+            </div>
+
+
+            <div
+                class="date"
+                id="today">
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+        <section class="content">
+
+
+            <!-- ================= TAMBAH PINJAMAN ================= -->
+            <div class="panel">
+
+                <h2>
+                    Tambah Pinjaman
+                </h2>
+
+                <p class="muted">
+                    Perhitungan memakai bunga flat tahunan
+                    yang diprorata berdasarkan tenor.
+                </p>
+
+
+                <form
+                    id="loanForm"
+                    class="form-grid">
+
+
+                    <!-- ANGGOTA -->
+                    <label>
+
+                        Anggota*
+
+                        <select
+                            id="loanMember"
+                            required>
+
+                            <option value="">
+                                Pilih anggota
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <!-- JUMLAH PINJAMAN -->
+                    <label>
+
+                        Jumlah Pinjaman*
+
+                        <input
+                            id="loanAmount"
+                            type="number"
+                            min="1"
+                            step="1"
+                            placeholder="Masukkan jumlah pinjaman"
+                            required>
+
+                    </label>
+
+
+                    <!-- BUNGA -->
+                    <label>
+
+                        Bunga per Tahun (%)
+
+                        <input
+                            id="loanInterest"
+                            type="number"
+                            min="0"
+                            max="100"
+                            step="0.01"
+                            value="12"
+                            required>
+
+                    </label>
+
+
+                    <!-- TENOR -->
+                    <label>
+
+                        Tenor (bulan)*
+
+                        <input
+                            id="loanTenor"
+                            type="number"
+                            min="1"
+                            max="120"
+                            value="12"
+                            required>
+
+                    </label>
+
+
+                    <!-- TANGGAL -->
+                    <label>
+
+                        Tanggal*
+
+                        <input
+                            id="loanDate"
+                            type="date"
+                            required>
+
+                    </label>
+
+
+                    <!-- SIMULASI -->
+                    <div
+                        id="loanSimulation"
+                        class="info full">
+
+                        Isi jumlah pinjaman dan tenor
+                        untuk melihat simulasi.
+
+                    </div>
+
+
+                    <!-- BUTTON -->
+                    <div class="actions full">
+
+                        <button
+                            type="submit"
+                            class="btn primary">
+
+                            Simpan Pinjaman
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= DAFTAR PINJAMAN ================= -->
+            <div class="panel">
+
+                <h3>
+                    Daftar Pinjaman
+                </h3>
+
+
+                <div class="table">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No Pinjaman
+                                </th>
+
+                                <th>
+                                    Anggota
+                                </th>
+
+                                <th>
+                                    Pokok
+                                </th>
+
+                                <th>
+                                    Bunga
+                                </th>
+
+                                <th>
+                                    Tenor
+                                </th>
+
+                                <th>
+                                    Total Kewajiban
+                                </th>
+
+                                <th>
+                                    Angsuran
+                                </th>
+
+                                <th>
+                                    Sisa
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="loanTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
 </div>
 
-<div class="panel">
-    <h3>Daftar Pinjaman</h3>
-    <div class="table">
-        <table>
-            <thead>
-                <tr>
-                    <th>No Pinjaman</th><th>Anggota</th><th>Pokok</th><th>Bunga</th>
-                    <th>Tenor</th><th>Total Kewajiban</th><th>Angsuran</th><th>Sisa</th><th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="loanTable"></tbody>
-        </table>
-    </div>
-</div>
 
-<script>
-fillMemberOptions("loanMember");
-setDateValue("loanDate");
-renderLoans();
-calculateLoan();
+<!-- ==================================================
+     APP.JS
+     HARUS DIMUAT SEBELUM FUNGSI DIGUNAKAN
+     ================================================== -->
 
-["loanAmount","loanInterest","loanTenor"].forEach(id => {
-    document.getElementById(id).addEventListener("input", calculateLoan);
-});
-document.getElementById("loanForm").addEventListener("submit", saveLoan);
-</script>
-
-    </section>
-</main>
-</div>
 <script src="../assets/js/app.js"></script>
+
+
+<!-- ==================================================
+     INISIALISASI HALAMAN
+     ================================================== -->
+
 <script>
-protectPage();
-setToday();
-setActive("pinjaman");
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /*
+     * Proteksi halaman
+     */
+    protectPage();
+
+
+    /*
+     * Tampilkan tanggal hari ini
+     */
+    setToday();
+
+
+    /*
+     * Tandai menu Pinjaman sebagai aktif
+     */
+    setActive("pinjaman");
+
+
+    /*
+     * Isi dropdown anggota
+     *
+     * Data diambil dari localStorage
+     * koperasiku_data_v3
+     */
+    fillMemberOptions("loanMember");
+
+
+    /*
+     * Isi tanggal otomatis
+     */
+    setDateValue("loanDate");
+
+
+    /*
+     * Tampilkan daftar pinjaman
+     */
+    renderLoans();
+
+
+    /*
+     * Tampilkan simulasi pinjaman
+     */
+    calculateLoan();
+
+
+    /*
+     * Input jumlah pinjaman
+     */
+    const amount =
+        document.getElementById("loanAmount");
+
+    if (amount) {
+
+        amount.addEventListener(
+            "input",
+            calculateLoan
+        );
+
+    }
+
+
+    /*
+     * Input bunga
+     */
+    const interest =
+        document.getElementById("loanInterest");
+
+    if (interest) {
+
+        interest.addEventListener(
+            "input",
+            calculateLoan
+        );
+
+    }
+
+
+    /*
+     * Input tenor
+     */
+    const tenor =
+        document.getElementById("loanTenor");
+
+    if (tenor) {
+
+        tenor.addEventListener(
+            "input",
+            calculateLoan
+        );
+
+    }
+
+
+    /*
+     * Form simpan pinjaman
+     */
+    const form =
+        document.getElementById("loanForm");
+
+    if (form) {
+
+        form.addEventListener(
+            "submit",
+            saveLoan
+        );
+
+    }
+
+});
+
 </script>
+
 </body>
 </html>

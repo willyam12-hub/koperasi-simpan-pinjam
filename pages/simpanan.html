@@ -3,117 +3,384 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Simpanan | KoperasiKu</title>
+
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+
 <body>
+
 <div class="layout">
-<aside class="sidebar">
-    <div class="brand">
-        <div class="brand-icon">K</div>
-        <div>
-            <strong>KoperasiKu</strong>
-            <small>Simpan Pinjam</small>
-        </div>
-    </div>
 
-    <nav class="nav">
-        <a href="dashboard.html" data-page="dashboard">Dashboard</a>
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
 
-        <div class="nav-title">DATA MASTER</div>
-        <a href="data-master.html" data-page="anggota">Data Anggota</a>
+        <div class="brand">
+            <div class="brand-icon">K</div>
 
-        <div class="nav-title">TRANSAKSI</div>
-        <a href="simpanan.html" data-page="simpanan">Simpanan</a>
-        <a href="penarikan.html" data-page="penarikan">Penarikan</a>
-        <a href="pinjaman.html" data-page="pinjaman">Pinjaman</a>
-        <a href="angsuran.html" data-page="angsuran">Angsuran</a>
-
-        <div class="nav-title">LAPORAN</div>
-        <a href="laporan.html" data-page="laporan">Laporan</a>
-    </nav>
-
-    <div class="sidebar-bottom">
-        <div class="admin-box">
-            <div class="avatar">A</div>
             <div>
-                <strong>Administrator</strong>
-                <small>Admin</small>
+                <strong>KoperasiKu</strong>
+                <small>Simpan Pinjam</small>
             </div>
         </div>
-        <button class="logout-button" onclick="logout()">Keluar</button>
-    </div>
-</aside>
-<main class="main">
-    <header class="topbar">
-        <div>
-            <span>PORTAL ADMIN</span>
-            <h1>Simpanan</h1>
+
+        <nav class="nav">
+
+            <a href="dashboard.html" data-page="dashboard">
+                Dashboard
+            </a>
+
+            <div class="nav-title">
+                DATA MASTER
+            </div>
+
+            <a href="data-master.html" data-page="anggota">
+                Data Anggota
+            </a>
+
+            <div class="nav-title">
+                TRANSAKSI
+            </div>
+
+            <a href="simpanan.html" data-page="simpanan">
+                Simpanan
+            </a>
+
+            <a href="penarikan.html" data-page="penarikan">
+                Penarikan
+            </a>
+
+            <a href="pinjaman.html" data-page="pinjaman">
+                Pinjaman
+            </a>
+
+            <a href="angsuran.html" data-page="angsuran">
+                Angsuran
+            </a>
+
+            <div class="nav-title">
+                LAPORAN
+            </div>
+
+            <a href="laporan.html" data-page="laporan">
+                Laporan
+            </a>
+
+        </nav>
+
+        <!-- ================= ADMIN ================= -->
+        <div class="sidebar-bottom">
+
+            <div class="admin-box">
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Admin</small>
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                class="logout-button"
+                onclick="logout()">
+                Keluar
+            </button>
+
         </div>
-        <div class="date" id="today"></div>
-    </header>
-    <section class="content">
 
-<div class="panel">
-    <h2>Tambah Simpanan</h2>
-    <p class="muted">Setoran masuk akan otomatis menambah saldo anggota.</p>
+    </aside>
 
-    <form id="savingForm" class="form-grid">
-        <label>Anggota*
-            <select id="savingMember" required></select>
-        </label>
 
-        <label>Jenis Simpanan*
-            <select id="savingType">
-                <option value="Pokok">Pokok</option>
-                <option value="Wajib">Wajib</option>
-                <option value="Sukarela" selected>Sukarela</option>
-            </select>
-        </label>
+    <!-- ================= MAIN ================= -->
+    <main class="main">
 
-        <label>Nominal*
-            <input id="savingAmount" type="number" min="1" step="1" required>
-        </label>
+        <!-- ================= TOPBAR ================= -->
+        <header class="topbar">
 
-        <label>Tanggal*
-            <input id="savingDate" type="date" required>
-        </label>
+            <div>
 
-        <label class="full">Keterangan
-            <textarea id="savingNote" placeholder="Contoh: setoran simpanan wajib"></textarea>
-        </label>
+                <span>
+                    PORTAL ADMIN
+                </span>
 
-        <div class="actions full">
-            <button class="btn primary">Simpan Simpanan</button>
-        </div>
-    </form>
+                <h1>
+                    Simpanan
+                </h1>
+
+            </div>
+
+            <div
+                class="date"
+                id="today">
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+        <section class="content">
+
+
+            <!-- ================= TAMBAH SIMPANAN ================= -->
+            <div class="panel">
+
+                <h2>
+                    Tambah Simpanan
+                </h2>
+
+                <p class="muted">
+                    Setoran masuk akan otomatis menambah saldo anggota.
+                </p>
+
+
+                <form
+                    id="savingForm"
+                    class="form-grid">
+
+
+                    <!-- ANGGOTA -->
+                    <label>
+
+                        Anggota*
+
+                        <select
+                            id="savingMember"
+                            required>
+
+                            <option value="">
+                                Pilih anggota
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <!-- JENIS SIMPANAN -->
+                    <label>
+
+                        Jenis Simpanan*
+
+                        <select
+                            id="savingType"
+                            required>
+
+                            <option value="Pokok">
+                                Pokok
+                            </option>
+
+                            <option value="Wajib">
+                                Wajib
+                            </option>
+
+                            <option
+                                value="Sukarela"
+                                selected>
+                                Sukarela
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <!-- NOMINAL -->
+                    <label>
+
+                        Nominal*
+
+                        <input
+                            id="savingAmount"
+                            type="number"
+                            min="1"
+                            step="1"
+                            placeholder="Masukkan nominal"
+                            required>
+
+                    </label>
+
+
+                    <!-- TANGGAL -->
+                    <label>
+
+                        Tanggal*
+
+                        <input
+                            id="savingDate"
+                            type="date"
+                            required>
+
+                    </label>
+
+
+                    <!-- KETERANGAN -->
+                    <label class="full">
+
+                        Keterangan
+
+                        <textarea
+                            id="savingNote"
+                            placeholder="Contoh: setoran simpanan wajib"></textarea>
+
+                    </label>
+
+
+                    <!-- BUTTON -->
+                    <div class="actions full">
+
+                        <button
+                            type="submit"
+                            class="btn primary">
+
+                            Simpan Simpanan
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= RIWAYAT ================= -->
+            <div class="panel">
+
+                <h3>
+                    Riwayat Simpanan
+                </h3>
+
+                <div class="table">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No
+                                </th>
+
+                                <th>
+                                    Anggota
+                                </th>
+
+                                <th>
+                                    Jenis
+                                </th>
+
+                                <th>
+                                    Nominal
+                                </th>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Keterangan
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="savingTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
 </div>
 
-<div class="panel">
-    <h3>Riwayat Simpanan</h3>
-    <div class="table">
-        <table>
-            <thead><tr><th>No</th><th>Anggota</th><th>Jenis</th><th>Nominal</th><th>Tanggal</th><th>Keterangan</th></tr></thead>
-            <tbody id="savingTable"></tbody>
-        </table>
-    </div>
-</div>
 
-<script>
-fillMemberOptions("savingMember");
-setDateValue("savingDate");
-renderSavings();
-document.getElementById("savingForm").addEventListener("submit", saveSaving);
-</script>
+<!-- ==================================================
+     APP.JS HARUS DIMUAT TERLEBIH DAHULU
+     ================================================== -->
 
-    </section>
-</main>
-</div>
 <script src="../assets/js/app.js"></script>
+
+
+<!-- ==================================================
+     INISIALISASI HALAMAN SIMPANAN
+     ================================================== -->
+
 <script>
-protectPage();
-setToday();
-setActive("simpanan");
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /*
+     * Proteksi halaman
+     */
+    protectPage();
+
+
+    /*
+     * Tampilkan tanggal hari ini
+     */
+    setToday();
+
+
+    /*
+     * Tandai menu Simpanan sebagai aktif
+     */
+    setActive("simpanan");
+
+
+    /*
+     * Ambil semua anggota aktif
+     * dari localStorage
+     * lalu masukkan ke dropdown
+     */
+    fillMemberOptions("savingMember");
+
+
+    /*
+     * Isi tanggal otomatis
+     */
+    setDateValue("savingDate");
+
+
+    /*
+     * Tampilkan riwayat simpanan
+     */
+    renderSavings();
+
+
+    /*
+     * Event ketika form disubmit
+     */
+    const form = document.getElementById("savingForm");
+
+    if (form) {
+
+        form.addEventListener(
+            "submit",
+            saveSaving
+        );
+
+    }
+
+});
+
 </script>
+
 </body>
 </html>

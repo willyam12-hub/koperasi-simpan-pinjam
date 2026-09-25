@@ -1,117 +1,409 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Penarikan | KoperasiKu</title>
+
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+
 <body>
+
 <div class="layout">
-<aside class="sidebar">
-    <div class="brand">
-        <div class="brand-icon">K</div>
-        <div>
-            <strong>KoperasiKu</strong>
-            <small>Simpan Pinjam</small>
-        </div>
-    </div>
 
-    <nav class="nav">
-        <a href="dashboard.html" data-page="dashboard">Dashboard</a>
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
 
-        <div class="nav-title">DATA MASTER</div>
-        <a href="data-master.html" data-page="anggota">Data Anggota</a>
+        <div class="brand">
 
-        <div class="nav-title">TRANSAKSI</div>
-        <a href="simpanan.html" data-page="simpanan">Simpanan</a>
-        <a href="penarikan.html" data-page="penarikan">Penarikan</a>
-        <a href="pinjaman.html" data-page="pinjaman">Pinjaman</a>
-        <a href="angsuran.html" data-page="angsuran">Angsuran</a>
-
-        <div class="nav-title">LAPORAN</div>
-        <a href="laporan.html" data-page="laporan">Laporan</a>
-    </nav>
-
-    <div class="sidebar-bottom">
-        <div class="admin-box">
-            <div class="avatar">A</div>
-            <div>
-                <strong>Administrator</strong>
-                <small>Admin</small>
+            <div class="brand-icon">
+                K
             </div>
+
+            <div>
+                <strong>KoperasiKu</strong>
+                <small>Simpan Pinjam</small>
+            </div>
+
         </div>
-        <button class="logout-button" onclick="logout()">Keluar</button>
-    </div>
-</aside>
-<main class="main">
-    <header class="topbar">
-        <div>
-            <span>PORTAL ADMIN</span>
-            <h1>Penarikan</h1>
+
+
+        <!-- ================= NAVIGASI ================= -->
+        <nav class="nav">
+
+            <a href="dashboard.html" data-page="dashboard">
+                Dashboard
+            </a>
+
+
+            <div class="nav-title">
+                DATA MASTER
+            </div>
+
+            <a href="data-master.html" data-page="anggota">
+                Data Anggota
+            </a>
+
+
+            <div class="nav-title">
+                TRANSAKSI
+            </div>
+
+            <a href="simpanan.html" data-page="simpanan">
+                Simpanan
+            </a>
+
+            <a href="penarikan.html" data-page="penarikan">
+                Penarikan
+            </a>
+
+            <a href="pinjaman.html" data-page="pinjaman">
+                Pinjaman
+            </a>
+
+            <a href="angsuran.html" data-page="angsuran">
+                Angsuran
+            </a>
+
+
+            <div class="nav-title">
+                LAPORAN
+            </div>
+
+            <a href="laporan.html" data-page="laporan">
+                Laporan
+            </a>
+
+        </nav>
+
+
+        <!-- ================= ADMIN ================= -->
+        <div class="sidebar-bottom">
+
+            <div class="admin-box">
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Admin</small>
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="logout-button"
+                onclick="logout()">
+
+                Keluar
+
+            </button>
+
         </div>
-        <div class="date" id="today"></div>
-    </header>
-    <section class="content">
 
-<div class="panel narrow">
-    <h2>Penarikan Simpanan</h2>
-    <p class="muted">Penarikan hanya bisa dilakukan jika saldo anggota mencukupi.</p>
+    </aside>
 
-    <form id="withdrawForm" class="form-grid">
-        <label>Anggota*
-            <select id="withdrawMember" required></select>
-        </label>
 
-        <label>Saldo Tersedia
-            <input id="withdrawBalance" value="Rp 0" readonly>
-        </label>
+    <!-- ================= MAIN ================= -->
+    <main class="main">
 
-        <label>Nominal Penarikan*
-            <input id="withdrawAmount" type="number" min="1" step="1" required>
-        </label>
 
-        <label>Tanggal*
-            <input id="withdrawDate" type="date" required>
-        </label>
+        <!-- ================= TOPBAR ================= -->
+        <header class="topbar">
 
-        <label class="full">Keterangan
-            <textarea id="withdrawNote" placeholder="Contoh: penarikan simpanan sukarela"></textarea>
-        </label>
+            <div>
 
-        <div class="actions full">
-            <button class="btn primary">Proses Penarikan</button>
-        </div>
-    </form>
+                <span>
+                    PORTAL ADMIN
+                </span>
+
+                <h1>
+                    Penarikan
+                </h1>
+
+            </div>
+
+
+            <div
+                class="date"
+                id="today">
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+        <section class="content">
+
+
+            <!-- ================= FORM PENARIKAN ================= -->
+            <div class="panel narrow">
+
+                <h2>
+                    Penarikan Simpanan
+                </h2>
+
+                <p class="muted">
+                    Penarikan hanya bisa dilakukan jika saldo anggota mencukupi.
+                </p>
+
+
+                <form
+                    id="withdrawForm"
+                    class="form-grid">
+
+
+                    <!-- ANGGOTA -->
+                    <label>
+
+                        Anggota*
+
+                        <select
+                            id="withdrawMember"
+                            required>
+
+                            <option value="">
+                                Pilih anggota
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <!-- SALDO -->
+                    <label>
+
+                        Saldo Tersedia
+
+                        <input
+                            id="withdrawBalance"
+                            type="text"
+                            value="Rp 0"
+                            readonly>
+
+                    </label>
+
+
+                    <!-- NOMINAL -->
+                    <label>
+
+                        Nominal Penarikan*
+
+                        <input
+                            id="withdrawAmount"
+                            type="number"
+                            min="1"
+                            step="1"
+                            placeholder="Masukkan nominal penarikan"
+                            required>
+
+                    </label>
+
+
+                    <!-- TANGGAL -->
+                    <label>
+
+                        Tanggal*
+
+                        <input
+                            id="withdrawDate"
+                            type="date"
+                            required>
+
+                    </label>
+
+
+                    <!-- KETERANGAN -->
+                    <label class="full">
+
+                        Keterangan
+
+                        <textarea
+                            id="withdrawNote"
+                            placeholder="Contoh: penarikan simpanan sukarela"></textarea>
+
+                    </label>
+
+
+                    <!-- BUTTON -->
+                    <div class="actions full">
+
+                        <button
+                            type="submit"
+                            class="btn primary">
+
+                            Proses Penarikan
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= RIWAYAT PENARIKAN ================= -->
+            <div class="panel">
+
+                <h3>
+                    Riwayat Penarikan
+                </h3>
+
+
+                <div class="table">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No
+                                </th>
+
+                                <th>
+                                    Anggota
+                                </th>
+
+                                <th>
+                                    Nominal
+                                </th>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Keterangan
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="withdrawTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
 </div>
 
-<div class="panel">
-    <h3>Riwayat Penarikan</h3>
-    <div class="table">
-        <table>
-            <thead><tr><th>No</th><th>Anggota</th><th>Nominal</th><th>Tanggal</th><th>Keterangan</th></tr></thead>
-            <tbody id="withdrawTable"></tbody>
-        </table>
-    </div>
-</div>
 
-<script>
-fillMemberOptions("withdrawMember");
-setDateValue("withdrawDate");
-updateWithdrawBalance();
-renderWithdrawals();
-document.getElementById("withdrawMember").addEventListener("change", updateWithdrawBalance);
-document.getElementById("withdrawForm").addEventListener("submit", saveWithdrawal);
-</script>
+<!-- ==================================================
+     APP.JS
+     HARUS DIMUAT SEBELUM FUNGSI DIGUNAKAN
+     ================================================== -->
 
-    </section>
-</main>
-</div>
 <script src="../assets/js/app.js"></script>
+
+
+<!-- ==================================================
+     INISIALISASI HALAMAN PENARIKAN
+     ================================================== -->
+
 <script>
-protectPage();
-setToday();
-setActive("penarikan");
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /*
+     * Proteksi halaman
+     */
+    protectPage();
+
+
+    /*
+     * Tampilkan tanggal hari ini
+     */
+    setToday();
+
+
+    /*
+     * Tandai menu Penarikan sebagai aktif
+     */
+    setActive("penarikan");
+
+
+    /*
+     * Isi dropdown anggota
+     */
+    fillMemberOptions("withdrawMember");
+
+
+    /*
+     * Isi tanggal otomatis
+     */
+    setDateValue("withdrawDate");
+
+
+    /*
+     * Tampilkan saldo anggota
+     */
+    updateWithdrawBalance();
+
+
+    /*
+     * Tampilkan riwayat penarikan
+     */
+    renderWithdrawals();
+
+
+    /*
+     * Ketika anggota diganti,
+     * saldo otomatis diperbarui
+     */
+    const member =
+        document.getElementById("withdrawMember");
+
+    if (member) {
+
+        member.addEventListener(
+            "change",
+            updateWithdrawBalance
+        );
+
+    }
+
+
+    /*
+     * Form penarikan
+     */
+    const form =
+        document.getElementById("withdrawForm");
+
+    if (form) {
+
+        form.addEventListener(
+            "submit",
+            saveWithdrawal
+        );
+
+    }
+
+});
+
 </script>
+
 </body>
 </html>
