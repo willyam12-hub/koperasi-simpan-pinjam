@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan | KoperasiKu</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+    <div class="brand">
+        <div class="brand-icon">K</div>
+        <div>
+            <strong>KoperasiKu</strong>
+            <small>Simpan Pinjam</small>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="dashboard.html" data-page="dashboard">Dashboard</a>
+
+        <div class="nav-title">DATA MASTER</div>
+        <a href="data-master.html" data-page="anggota">Data Anggota</a>
+
+        <div class="nav-title">TRANSAKSI</div>
+        <a href="simpanan.html" data-page="simpanan">Simpanan</a>
+        <a href="penarikan.html" data-page="penarikan">Penarikan</a>
+        <a href="pinjaman.html" data-page="pinjaman">Pinjaman</a>
+        <a href="angsuran.html" data-page="angsuran">Angsuran</a>
+
+        <div class="nav-title">LAPORAN</div>
+        <a href="laporan.html" data-page="laporan">Laporan</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+        <div class="admin-box">
+            <div class="avatar">A</div>
+            <div>
+                <strong>Administrator</strong>
+                <small>Admin</small>
+            </div>
+        </div>
+        <button class="logout-button" onclick="logout()">Keluar</button>
+    </div>
+</aside>
+<main class="main">
+    <header class="topbar">
+        <div>
+            <span>PORTAL ADMIN</span>
+            <h1>Laporan</h1>
+        </div>
+        <div class="date" id="today"></div>
+    </header>
+    <section class="content">
+
+<div class="cards">
+    <div class="stat-card"><span>Total Anggota</span><strong id="reportMembers">0</strong></div>
+    <div class="stat-card"><span>Saldo Simpanan</span><strong id="reportSavings">Rp 0</strong></div>
+    <div class="stat-card"><span>Total Pinjaman</span><strong id="reportLoans">Rp 0</strong></div>
+    <div class="stat-card"><span>Total Angsuran</span><strong id="reportInstallments">Rp 0</strong></div>
+</div>
+
+<div class="panel">
+    <h3>Ringkasan Keuangan</h3>
+    <div class="summary-grid">
+        <div><span>Simpanan Masuk</span><strong id="reportIn">Rp 0</strong></div>
+        <div><span>Penarikan</span><strong id="reportOut">Rp 0</strong></div>
+        <div><span>Sisa Pinjaman</span><strong id="reportRemaining">Rp 0</strong></div>
+        <div><span>Pinjaman Aktif</span><strong id="reportActive">0</strong></div>
+    </div>
+</div>
+
+<div class="panel">
+    <h3>Semua Transaksi</h3>
+    <div class="table">
+        <table>
+            <thead><tr><th>Jenis</th><th>Tanggal</th><th>Anggota</th><th>Nominal</th><th>Keterangan</th></tr></thead>
+            <tbody id="reportTable"></tbody>
+        </table>
+    </div>
+</div>
+
+<script>renderReport();</script>
+
+    </section>
+</main>
+</div>
+<script src="../assets/js/app.js"></script>
+<script>
+protectPage();
+setToday();
+setActive("laporan");
+</script>
+</body>
+</html>

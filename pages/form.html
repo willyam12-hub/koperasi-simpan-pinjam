@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Anggota | KoperasiKu</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+    <div class="brand">
+        <div class="brand-icon">K</div>
+        <div>
+            <strong>KoperasiKu</strong>
+            <small>Simpan Pinjam</small>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="dashboard.html" data-page="dashboard">Dashboard</a>
+
+        <div class="nav-title">DATA MASTER</div>
+        <a href="data-master.html" data-page="anggota">Data Anggota</a>
+
+        <div class="nav-title">TRANSAKSI</div>
+        <a href="simpanan.html" data-page="simpanan">Simpanan</a>
+        <a href="penarikan.html" data-page="penarikan">Penarikan</a>
+        <a href="pinjaman.html" data-page="pinjaman">Pinjaman</a>
+        <a href="angsuran.html" data-page="angsuran">Angsuran</a>
+
+        <div class="nav-title">LAPORAN</div>
+        <a href="laporan.html" data-page="laporan">Laporan</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+        <div class="admin-box">
+            <div class="avatar">A</div>
+            <div>
+                <strong>Administrator</strong>
+                <small>Admin</small>
+            </div>
+        </div>
+        <button class="logout-button" onclick="logout()">Keluar</button>
+    </div>
+</aside>
+<main class="main">
+    <header class="topbar">
+        <div>
+            <span>PORTAL ADMIN</span>
+            <h1>Form Anggota</h1>
+        </div>
+        <div class="date" id="today"></div>
+    </header>
+    <section class="content">
+
+<div class="panel narrow">
+    <h2 id="formTitle">Tambah Anggota</h2>
+    <p class="muted">Isi data anggota baru. Data akan langsung muncul pada modul transaksi.</p>
+
+    <form id="memberForm" class="form-grid">
+        <input type="hidden" id="memberId">
+
+        <label>Nama Lengkap*
+            <input id="memberName" required>
+        </label>
+
+        <label>NIK
+            <input id="memberNik">
+        </label>
+
+        <label>Nomor Telepon
+            <input id="memberPhone">
+        </label>
+
+        <label>Status*
+            <select id="memberStatus">
+                <option value="Aktif">Aktif</option>
+                <option value="Nonaktif">Nonaktif</option>
+            </select>
+        </label>
+
+        <label class="full">Alamat
+            <textarea id="memberAddress"></textarea>
+        </label>
+
+        <label>Tanggal Daftar*
+            <input id="memberDate" type="date" required>
+        </label>
+
+        <div class="actions full">
+            <a class="btn" href="data-master.html">Batal</a>
+            <button class="btn primary" type="submit">Simpan Anggota</button>
+        </div>
+    </form>
+</div>
+
+<script>
+setDateValue("memberDate");
+
+const params = new URLSearchParams(window.location.search);
+const editId = Number(params.get("id") || 0);
+
+if (editId) {
+    loadMemberForm(editId);
+}
+
+document.getElementById("memberForm").addEventListener("submit", saveMember);
+</script>
+
+    </section>
+</main>
+</div>
+<script src="../assets/js/app.js"></script>
+<script>
+protectPage();
+setToday();
+setActive("anggota");
+</script>
+</body>
+</html>

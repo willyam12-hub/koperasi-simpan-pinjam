@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | KoperasiKu</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="login-page">
+
+<div class="login-card">
+    <div class="logo-box">K</div>
+    <div class="login-title">
+        <span>PORTAL ADMIN</span>
+        <h1>KoperasiKu</h1>
+        <p>Sistem Informasi Koperasi Simpan Pinjam</p>
+    </div>
+
+    <form id="loginForm" class="form-stack">
+        <label>Email
+            <input id="email" type="email" placeholder="admin@koperasiku.id" required>
+        </label>
+        <label>Password
+            <input id="password" type="password" placeholder="admin123" required>
+        </label>
+        <button class="btn primary full" type="submit">Masuk</button>
+    </form>
+
+    
+</div>
+
+<script src="assets/js/app.js"></script>
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (email === "admin@koperasiku.id" && password === "admin123") {
+        localStorage.setItem("koperasi_login", "true");
+        window.location.href = "pages/dashboard.html";
+    } else {
+        alert("Email atau password salah.");
+    }
+});
+</script>
+</body>
+</html>
